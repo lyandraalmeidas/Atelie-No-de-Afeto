@@ -1,18 +1,18 @@
 .cadastro-container {
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
 .cadastro-wrapper {
   background: white;
   border-radius: 20px;
-  padding: 50px;
+  padding: 20px;
   box-shadow: 0 10px 40px rgba(93, 64, 55, 0.15);
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   border: 2px solid #f8d7bb;
 }
 
@@ -42,6 +42,17 @@
   gap: 20px;
 }
 
+.tel-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.phone-country {
+  max-width: 90px;
+}
+
 .form-col {
   margin-bottom: 0 !important;
 }
@@ -51,9 +62,11 @@
   font-weight: 600;
   margin-bottom: 10px;
   display: block;
+  text-align: left;
 }
 
 .form-input {
+  text-align: left;
   border: 2px solid #e8d4c4 !important;
   border-radius: 10px;
   padding: 12px 15px !important;
@@ -132,7 +145,7 @@
 
 @media (max-width: 576px) {
   .cadastro-wrapper {
-    padding: 30px 25px;
+    padding: 15px;
   }
 
   .cadastro-title {
