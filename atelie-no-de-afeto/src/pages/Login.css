@@ -1,0 +1,135 @@
+.login-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.login-wrapper {
+  background: white;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 10px 40px rgba(93, 64, 55, 0.15);
+  width: 100%;
+  max-width: 450px;
+  border: 2px solid #f8d7bb;
+}
+
+.login-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: #5d4037;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.login-subtitle {
+  color: #8d6e63;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 0.95rem;
+}
+
+.login-form {
+  margin-bottom: 30px;
+}
+
+.form-label {
+  color: #5d4037;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.form-input {
+  border: 2px solid #e8d4c4 !important;
+  border-radius: 10px;
+  padding: 12px 15px !important;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #faf8f6 !important;
+}
+
+.form-input:focus {
+  border-color: #bba589 !important;
+  background-color: #fff9f5 !important;
+  box-shadow: 0 0 0 0.2rem rgba(187, 165, 137, 0.15) !important;
+}
+
+.form-check {
+  margin-left: 0;
+}
+
+.form-check input[type="checkbox"] {
+  border-color: #e8d4c4;
+  border-radius: 4px;
+}
+
+.form-check input[type="checkbox"]:checked {
+  background-color: #bba589;
+  border-color: #bba589;
+}
+
+.form-check label {
+  color: #5d4037;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d4a574, #bba589);
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #c29563, #a89478);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(212, 165, 116, 0.4);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+.login-footer {
+  text-align: center;
+  color: #8d6e63;
+  margin-bottom: 0;
+}
+
+.link-criar {
+  color: #d4a574;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.link-criar:hover {
+  color: #bba589;
+  text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  .login-wrapper {
+    padding: 30px 25px;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .login-subtitle {
+    font-size: 0.9rem;
+  }
+}
