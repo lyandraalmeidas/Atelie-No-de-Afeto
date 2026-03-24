@@ -12,6 +12,9 @@ function Menu() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/produtos">Produtos</Nav.Link>
+            <Nav.Link as={Link} to="/carrinho">Carrinho</Nav.Link>
             <Nav.Link as={Link} to="/cadastro">Cadastro</Nav.Link>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
           </Nav>

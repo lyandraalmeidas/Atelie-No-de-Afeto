@@ -1,8 +1,11 @@
+body{
+  background-image: url(../assets/backgroundimage.png);
+}
 .cadastro-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 5px;
 }
 
 .cadastro-wrapper {

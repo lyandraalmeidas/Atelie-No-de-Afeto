@@ -9,13 +9,11 @@ function Cadastro() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
-    birthDate: '',
+    cpf: '',
     email: '',
-    countryCode: '+55',
     phone: '',
     password: '',
     confirmPassword: '',
-    terms: false,
   });
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState('');
@@ -82,22 +80,23 @@ function Cadastro() {
                 isInvalid={!!errors.name}
                 required
               />
+          
               <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-4 form-col" controlId="cadastroBirthDate">
-              <Form.Label className="form-label">Data de Nascimento</Form.Label>
-              <Form.Control
-                name="birthDate"
-                type="date"
-                className="form-input"
-                value={formData.birthDate}
-                onChange={handleChange}
-                isInvalid={!!errors.birthDate}
-                required
-              />
-              <Form.Control.Feedback type="invalid">{errors.birthDate}</Form.Control.Feedback>
-            </Form.Group>
+            <Form.Group className='mb-4 form-col' controlId='cadastroCPF'>
+            <Form.Label className='form-label'>CPF</Form.Label>
+            <Form.Control 
+              name="cpf" 
+              placeholder='Seu CPF'
+              className='form-input'
+              value={formData.cpf} 
+              onChange={handleChange}
+              isInvalid={!!errors.cpf}
+            />
+            <Form.Control.Feedback type="invalid">{errors.cpf}</Form.Control.Feedback>
+          </Form.Group>
+
           </div>
 
           <Form.Group className="mb-4" controlId="cadastroEmail">
@@ -113,32 +112,6 @@ function Cadastro() {
               required
             />
             <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group className="mb-4" controlId="cadastroTelefone">
-            <Form.Label className="form-label">Telefone</Form.Label>
-            <div className="tel-row">
-              <Form.Control
-                name="countryCode"
-                type="tel"
-                placeholder="+55"
-                className="form-input phone-country"
-                value={formData.countryCode}
-                onChange={handleChange}
-                required
-              />
-              <Form.Control
-                name="phone"
-                type="tel"
-                placeholder="(11) 99999-9999"
-                className="form-input phone-number"
-                value={formData.phone}
-                onChange={handleChange}
-                isInvalid={!!errors.phone}
-                required
-              />
-            </div>
-            <Form.Control.Feedback type="invalid">{errors.phone}</Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group className="mb-4" controlId="cadastroPassword">
@@ -169,21 +142,6 @@ function Cadastro() {
               required
             />
             <Form.Control.Feedback type="invalid">{errors.confirmPassword}</Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group className="mb-4" controlId="cadastroTerms">
-            <Form.Check
-              name="terms"
-              type="checkbox"
-              label="Concordo com os termos e condições"
-              className="form-check"
-              checked={formData.terms}
-              onChange={handleChange}
-              isInvalid={!!errors.terms}
-              feedback={errors.terms}
-              feedbackType="invalid"
-              required
-            />
           </Form.Group>
 
           <Button className="cadastro-button" type="submit">
