@@ -20,6 +20,30 @@
     color: #7e6c59 !important;
 }
 
+.Menu .navbar-nav .nav-link.nav-cta {
+    margin-left: 0.75rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    background: #5d4037;
+    color: #fff !important;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.Menu .navbar-nav .nav-link.nav-cta .nav-icon {
+    margin-right: 0.45rem;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.Menu .navbar-nav .nav-link.nav-cta:hover {
+    background: #4a342c;
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
 .Menu .navbar-toggler {
     border: none;
     background-color: rgba(255, 255, 255, 0.5);

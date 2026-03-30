@@ -1,0 +1,224 @@
+.form-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1.25rem;
+}
+
+.form-page-wrapper {
+  width: min(100%, 540px);
+  background: #ffffff;
+  border: 1px solid rgba(226, 216, 204, 0.85);
+  border-radius: 32px;
+  padding: 3rem 2.2rem;
+  box-shadow: 0 28px 70px rgba(40, 44, 65, 0.08);
+}
+
+.form-page-top {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.form-page-title {
+   font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  color: #5d4037;
+  font-weight: 700;
+  margin: 0;
+}
+
+.form-page-subtitle {
+  color: #6d655d;
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0 auto;
+}
+
+.form-page-keynotes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.form-page-keynotes span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #ede4d8;
+  background: #fffaf3;
+  color: #79614b;
+  font-size: 0.85rem;
+}
+
+.form-page-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-col {
+  margin-bottom: 0 !important;
+}
+
+.form-label {
+  color: #5a4b3f;
+  font-weight: 600;
+  margin-bottom: 0.65rem;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  border: 1px solid #d9cfc4 !important;
+  border-radius: 16px;
+  padding: 15px 16px !important;
+  font-size: 1rem;
+  color: #3b3530;
+  background-color: #ffffff !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.form-input::placeholder {
+  color: #a89985;
+}
+
+.form-input:focus {
+  border-color: #b99e7b !important;
+  background-color: #fffefa !important;
+  box-shadow: 0 0 0 0.2rem rgba(185, 158, 123, 0.16) !important;
+}
+
+.form-check {
+  margin-left: 0;
+}
+
+.form-check input[type="checkbox"] {
+  border-color: #d8c9b6;
+  border-radius: 6px;
+}
+
+.form-check input[type="checkbox"]:checked {
+  background-color: #b99e7b;
+  border-color: #b99e7b;
+}
+
+.form-check label {
+  color: #5a4b3f;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.form-page-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.form-page-button {
+  width: 100%;
+  padding: 15px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d4a574, #bba589);
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 16px 26px rgba(126, 83, 34, 0.22);
+}
+
+.form-page-button:hover {
+  background: linear-gradient(135deg, #8f683f 0%, #b08c5c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 28px rgba(126, 83, 34, 0.24);
+}
+
+.form-page-button:active {
+  transform: translateY(0);
+}
+
+.form-page-feedback {
+  margin-top: 1rem;
+  padding: 1rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(49, 138, 85, 0.18);
+  background: #eff8f2;
+  color: #225c35;
+  font-size: 0.95rem;
+}
+
+.form-page-footer {
+  text-align: center;
+  color: #6d645b;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.form-page-link {
+  color: #885f33;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.form-page-link:hover {
+  color: #a67f52;
+  text-decoration: underline;
+}
+
+.form-page-link-secondary {
+  color: #7d6249;
+  text-decoration: none;
+  font-size: 0.94rem;
+}
+
+.form-page-link-secondary:hover {
+  color: #5d4532;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .form-page-wrapper {
+    padding: 2.25rem 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-page-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-page-top {
+    gap: 0.75rem;
+  }
+
+  .form-page-title {
+    font-size: 1.75rem;
+  }
+
+  .form-page-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .form-page-keynotes {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

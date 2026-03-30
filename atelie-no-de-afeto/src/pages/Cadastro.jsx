@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-import './Cadastro.css';
+import { Button, Form, Container } from 'react-bootstrap';
+import './FormPage.css';
 
 function Cadastro() {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     cpf: '',
@@ -14,145 +13,200 @@ function Cadastro() {
     phone: '',
     password: '',
     confirmPassword: '',
+    acceptTerms: false,
   });
+
   const [errors, setErrors] = useState({});
   const [feedback, setFeedback] = useState('');
 
-  const validator = () => {
-    const validationErrors = {};
+  const validate = () => {
+    const err = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const cpfRegex = /^\d{11}$/;
 
-    if (!formData.name.trim()) validationErrors.name = 'Informe seu nome.';
-    if (!formData.birthDate) validationErrors.birthDate = 'Informe sua data de nascimento.';
-    if (!formData.email) validationErrors.email = 'Informe seu e-mail.';
-    else if (!emailRegex.test(formData.email)) validationErrors.email = 'E-mail inválido.';
-    if (!formData.phone.trim()) validationErrors.phone = 'Informe seu telefone.';
+    if (!formData.name.trim()) err.name = 'Informe seu nome';
 
-    if (!formData.password) validationErrors.password = 'Informe sua senha.';
-    else if (formData.password.length < 8) validationErrors.password = 'Senha deve ter 8+ caracteres.';
+    if (!cpfRegex.test(formData.cpf))
+      err.cpf = 'CPF deve conter 11 números';
 
-    if (formData.password !== formData.confirmPassword) validationErrors.confirmPassword = 'As senhas não conferem.';
-    if (!formData.terms) validationErrors.terms = 'Você precisa aceitar os termos.';
+    if (!emailRegex.test(formData.email))
+      err.email = 'E-mail inválido';
 
-    return validationErrors;
+    if (!formData.phone.trim())
+      err.phone = 'Informe seu telefone';
+
+    if (formData.password.length < 8)
+      err.password = 'Senha deve ter no mínimo 8 caracteres';
+
+    if (formData.password !== formData.confirmPassword)
+      err.confirmPassword = 'As senhas não conferem';
+
+    if (!formData.acceptTerms)
+      err.acceptTerms = 'Você precisa aceitar os termos de uso';
+
+    return err;
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setFeedback('');
-    const validationErrors = validator();
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+    const err = validate();
+
+    if (Object.keys(err).length > 0) {
+      setErrors(err);
       return;
     }
 
     setErrors({});
-    setFeedback('Cadastro realizado com sucesso! Redirecionando...');
+    setFeedback('Cadastro realizado com sucesso!');
 
-    setTimeout(() => {
-      navigate('/login');
-    }, 1200);
+    // 🔥 Aqui depois você conecta com API
+    setTimeout(() => navigate('/login'), 1000);
   };
 
-  const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
 
   return (
-    <Container className="cadastro-container">
-      <div className="cadastro-wrapper">
-        <h1 className="cadastro-title">Crie Sua Conta</h1>
-        <p className="cadastro-subtitle">Venha conhecer o nosso trabalho!</p>
+    <Container className="form-page-container">
+      <div className="form-page-wrapper">
+        <div className="form-page-top">
+          <h1 className="form-page-title">Criar Conta</h1>
+          <p className="form-page-subtitle">Seu espaço de carinho começa aqui.</p>
+          <div className="form-page-keynotes">
+            <span>Entrega rápida</span>
+            <span>Cadastro seguro</span>
+            <span>Ofertas exclusivas</span>
+          </div>
+        </div>
 
-        <Form className="cadastro-form" onSubmit={handleSubmit} noValidate>
+        <Form className="form-page-form" onSubmit={handleSubmit} noValidate>
           <div className="form-row">
-            <Form.Group className="mb-4 form-col" controlId="cadastroName">
-              <Form.Label className="form-label">Nome</Form.Label>
-              <Form.Control
+            <Form.Group className="mb-4 form-col">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control className="form-input" placeholder="Nome completo"
                 name="name"
-                type="text"
-                placeholder="Seu nome"
-                className="form-input"
                 value={formData.name}
                 onChange={handleChange}
                 isInvalid={!!errors.name}
-                required
               />
-          
-              <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">
+                {errors.name}
+              </Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className='mb-4 form-col' controlId='cadastroCPF'>
-            <Form.Label className='form-label'>CPF</Form.Label>
-            <Form.Control 
-              name="cpf" 
-              placeholder='Seu CPF'
-              className='form-input'
-              value={formData.cpf} 
-              onChange={handleChange}
-              isInvalid={!!errors.cpf}
-            />
-            <Form.Control.Feedback type="invalid">{errors.cpf}</Form.Control.Feedback>
-          </Form.Group>
-
+            <Form.Group className="mb-4 form-col">
+              <Form.Label>CPF</Form.Label>
+              <Form.Control
+                className="form-input"
+                name="cpf"
+                placeholder="CPF sem pontos"
+                value={formData.cpf}
+                onChange={handleChange}
+                isInvalid={!!errors.cpf}
+              />
+              <Form.Control.Feedback type="invalid">
+                {errors.cpf}
+              </Form.Control.Feedback>
+            </Form.Group>
           </div>
 
-          <Form.Group className="mb-4" controlId="cadastroEmail">
-            <Form.Label className="form-label">Email</Form.Label>
+          <Form.Group className="mb-4">
+            <Form.Label>Email</Form.Label>
             <Form.Control
+              className="form-input"
               name="email"
               type="email"
               placeholder="seu@email.com"
-              className="form-input"
               value={formData.email}
               onChange={handleChange}
               isInvalid={!!errors.email}
-              required
             />
-            <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              {errors.email}
+            </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4" controlId="cadastroPassword">
-            <Form.Label className="form-label">Senha</Form.Label>
+          <Form.Group className="mb-4">
+            <Form.Label>Telefone</Form.Label>
             <Form.Control
-              name="password"
-              type="password"
-              placeholder="Crie uma senha segura"
               className="form-input"
+              name="phone"
+              type="tel"
+              placeholder="(00) 00000-0000"
+              value={formData.phone}
+              onChange={handleChange}
+              isInvalid={!!errors.phone}
+            />
+            <Form.Control.Feedback type="invalid">
+              {errors.phone}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Form.Group className="mb-4">
+            <Form.Label>Senha</Form.Label>
+            <Form.Control
+              className="form-input"
+              type="password"
+              name="password"
+              placeholder="Mínimo 8 caracteres"
               value={formData.password}
               onChange={handleChange}
               isInvalid={!!errors.password}
-              required
             />
-            <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              {errors.password}
+            </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="mb-4" controlId="cadastroConfirmPassword">
-            <Form.Label className="form-label">Confirme a Senha</Form.Label>
+          <Form.Group className="mb-4">
+            <Form.Label>Confirmar Senha</Form.Label>
             <Form.Control
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirme sua senha"
               className="form-input"
+              type="password"
+              name="confirmPassword"
+              placeholder="Repita a senha"
               value={formData.confirmPassword}
               onChange={handleChange}
               isInvalid={!!errors.confirmPassword}
-              required
             />
-            <Form.Control.Feedback type="invalid">{errors.confirmPassword}</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              {errors.confirmPassword}
+            </Form.Control.Feedback>
           </Form.Group>
 
-          <Button className="cadastro-button" type="submit">
-            Criar Conta
+          <Form.Group className="mb-4 form-checkbox">
+            <Form.Check
+              type="checkbox"
+              id="acceptTerms"
+              name="acceptTerms"
+              label="Li e aceito os termos de uso"
+              checked={formData.acceptTerms}
+              onChange={handleChange}
+              isInvalid={!!errors.acceptTerms}
+              feedback={errors.acceptTerms}
+              feedbackType="invalid"
+            />
+          </Form.Group>
+
+          <Button className="form-page-button" type="submit">
+            Cadastrar
           </Button>
 
-          {feedback && <p className="cadastro-footer" style={{ marginTop: '12px', color: '#2d6a4f' }}>{feedback}</p>}
+          {feedback && <div className="form-page-feedback form-page-feedback--success">{feedback}</div>}
+
+          {feedback && <p className="form-page-footer">{feedback}</p>}
         </Form>
 
-        <p className="cadastro-footer">
-          Já tem conta? <Link to="/login" className="link-login">Faça login aqui</Link>
+        <p className="form-page-footer">
+          Já tem conta? <Link className="form-page-link" to="/login">Entrar</Link>
         </p>
       </div>
     </Container>

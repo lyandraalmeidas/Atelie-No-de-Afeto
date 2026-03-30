@@ -1,0 +1,78 @@
+.home-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 1.5rem 4rem;
+    min-height: calc(100vh - 80px);
+    background-image: url('../assets/backgroundimage.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.home-hero-content {
+    max-width: 640px;
+    width: 100%;
+    padding: 3rem 2rem;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 24px 60px rgba(93, 64, 55, 0.16);
+    text-align: center;
+}
+
+.home-hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #8d6e63;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.home-hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    color: #5d4037;
+    margin: 0 0 1rem;
+    line-height: 1.05;
+}
+
+.home-hero-copy {
+    color: #5d4037;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 0 0 2rem;
+}
+
+.home-hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 1.8rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #d4a574, #bba589);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(187, 165, 137, 0.3);
+}
+
+@media (max-width: 768px) {
+    .home-hero {
+        padding: 4rem 1rem 3rem;
+    }
+
+    .home-hero-content {
+        padding: 2.4rem 1.5rem;
+    }
+
+    .home-hero-button {
+        width: 100%;
+    }
+}
