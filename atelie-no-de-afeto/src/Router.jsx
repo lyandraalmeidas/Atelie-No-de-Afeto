@@ -23,6 +23,10 @@ const router = createBrowserRouter([
     element: <Carrinho />,
   },
   {
+    path: "/admin", 
+    element: <AdminPage />,
+  },
+  {
     path: "/cadastro",
     element: <Cadastro />,
   },

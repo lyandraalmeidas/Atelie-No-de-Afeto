@@ -15,6 +15,7 @@
     padding: 3rem 2rem;
     border-radius: 28px;
     background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(66, 33, 28, 0.85);
     box-shadow: 0 24px 60px rgba(93, 64, 55, 0.16);
     text-align: center;
 }
@@ -50,7 +51,7 @@
     justify-content: center;
     padding: 0.95rem 1.8rem;
     border-radius: 999px;
-    background: linear-gradient(135deg, #d4a574, #bba589);
+    background: linear-gradient(135deg, #6d503f, #997c6e);
     color: white;
     font-size: 1rem;
     font-weight: 700;

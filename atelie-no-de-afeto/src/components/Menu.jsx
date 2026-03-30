@@ -16,6 +16,7 @@ function Menu() {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/produtos">Produtos</Nav.Link>
             <Nav.Link as={Link} to="/carrinho">Carrinho</Nav.Link>
+            <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
             <Nav.Link as={Link} to="/cadastro" className="nav-cta">
               <FaUserPlus className="nav-icon" /> Cadastro
             </Nav.Link>
