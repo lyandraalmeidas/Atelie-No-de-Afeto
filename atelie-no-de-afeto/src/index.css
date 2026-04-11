@@ -1,4 +1,61 @@
+:root {
+  --bg-surface: #ffffff;
+  --bg-muted: #f7f2ec;
+  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-overlay: rgba(255, 255, 255, 0.88);
+  --bg-soft: #fffaf3;
+  --bg-soft-alt: #fffefa;
+  --text-primary: #5d4037;
+  --text-strong: #4f3424;
+  --text-secondary: #6d655d;
+  --text-muted: #7f6b5c;
+  --text-body: #3b3530;
+  --text-placeholder: #a89985;
+  --text-accent: #885f33;
+  --text-accent-dark: #a67f52;
+  --text-accent-muted: #7d6249;
+  --text-contrast: #ffffff;
+  --accent: #6d503f;
+  --accent-alt: #997c6e;
+  --accent-light: #f8d7bb;
+  --accent-medium: #bba589;
+  --accent-medium-dark: #8f683f;
+  --accent-alt-dark: #b08c5c;
+  --brand-dark: #4a342c;
+  --border: rgba(133, 109, 92, 0.16);
+  --border-dark: rgba(66, 33, 28, 0.85);
+  --border-light: #ede4d8;
+  --border-medium: #d9cfc4;
+  --border-muted: #d8c9b6;
+  --border-warning: #b99e7b;
+  --success: #225c35;
+  --success-soft: #eff8f2;
+  --gradient-navbar: linear-gradient(135deg, var(--accent-light), var(--accent-medium));
+  --gradient-button: linear-gradient(135deg, var(--accent), var(--accent-alt));
+  --gradient-button-alt: linear-gradient(135deg, var(--accent-medium-dark) 0%, var(--accent-alt-dark) 100%);
+  --shadow: 0 28px 70px rgba(40, 44, 65, 0.08);
+  --shadow-soft: 0 24px 60px rgba(93, 64, 55, 0.16);
+  --shadow-accent: 0 18px 28px rgba(126, 83, 34, 0.24);
+  --shadow-hover: 0 12px 24px rgba(187, 165, 137, 0.3);
+  --overlay-light: rgba(255, 255, 255, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f4ede5;
+  color: var(--text-body);
+}
+
+code {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

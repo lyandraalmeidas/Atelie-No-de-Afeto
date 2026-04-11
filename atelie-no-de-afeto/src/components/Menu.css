@@ -1,50 +1,82 @@
 .Menu {
-    background: linear-gradient(135deg, #f8d7bb, #bba589) !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1050;
+    background: var(--gradient-navbar) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .Menu .navbar-brand {
     font-family: 'Dancing Script', cursive; 
     font-size: 1.8rem;
-    color: #5d4037 !important; 
+    color: var(--text-primary) !important; 
     font-weight: bold;
 }
 
 .Menu .navbar-nav .nav-link {
-    color: #5d4037 !important;
+    color: var(--text-primary) !important;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .Menu .navbar-nav .nav-link:hover {
-    color: #7e6c59 !important;
+    color: var(--text-secondary) !important;
 }
 
-.Menu .navbar-nav .nav-link.nav-cta {
+.Menu .navbar-nav .nav-link.nav-cta,
+.Menu .navbar-nav .nav-link.nav-admin {
     margin-left: 0.75rem;
     padding: 0.55rem 1.1rem;
     border-radius: 999px;
-    background: #5d4037;
-    color: #fff !important;
+    background: var(--text-primary);
+    color: var(--text-contrast) !important;
     font-weight: 700;
     transition: transform 0.2s ease, background 0.2s ease;
     display: inline-flex;
     align-items: center;
 }
 
-.Menu .navbar-nav .nav-link.nav-cta .nav-icon {
+.Menu .navbar-nav .nav-link.nav-admin {
+    background: var(--brand-dark);
+}
+
+.Menu .navbar-nav .nav-link.nav-cta .nav-icon,
+.Menu .navbar-nav .nav-link.nav-admin .nav-icon {
     margin-right: 0.45rem;
     font-size: 0.95rem;
     vertical-align: middle;
 }
 
-.Menu .navbar-nav .nav-link.nav-cta:hover {
-    background: #4a342c;
-    color: #fff !important;
+.Menu .navbar-nav .nav-link.nav-cta:hover,
+.Menu .navbar-nav .nav-link.nav-admin:hover {
+    background: var(--accent-alt);
+    color: var(--text-contrast) !important;
     transform: translateY(-1px);
 }
 
 .Menu .navbar-toggler {
     border: none;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--overlay-light);
+}
+
+@media (max-width: 991px) {
+    .Menu .navbar-nav {
+        width: 100%;
+    }
+
+    .Menu .navbar-nav .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+
+    .Menu .navbar-nav .nav-link.nav-cta,
+    .Menu .navbar-nav .nav-link.nav-admin {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
 }
