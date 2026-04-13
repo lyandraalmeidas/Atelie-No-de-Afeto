@@ -43,7 +43,7 @@ async function main() {
     data: [
       { name: 'Vestido em crochê (granny square)', description: 'Uma peça marcante, confortável e cheia de estilo — mistura o clássico artesanal com um toque moderno.', price: 180.0, stock: 50, imageUrl: 'https://placehold.co/400x300?text=Laço+de+Seda', categoryId: vestidos.id },
       { name: 'Bolsa em crochê com laço', description: 'Delicada e estilosa, perfeita para compor looks leves e românticos.', price: 75.5, stock: 30, imageUrl: 'https://placehold.co/400x300?text=Bolsa+em+Crochê', categoryId: bolsas.id },
-      { name: 'Almofadas em crochê (formato de estrela)', description: 'Ideais para decoração, trazendo aconchego e um toque fofo ao ambiente.', price: 35.5, stock: 20, imageUrl: 'https://placehold.co/400x300?text=Brinco', categoryId: acessorios.id },
+      { name: 'Almofadas em crochê (formato de estrela)', description: 'Ideais para decoração, trazendo aconchego e um toque fofo ao ambiente.', price: 35.5, stock: 20, imageUrl: 'https://placehold.co/400x300?text=Brinco', categoryId: almofadas.id },
           ],
   });
 
