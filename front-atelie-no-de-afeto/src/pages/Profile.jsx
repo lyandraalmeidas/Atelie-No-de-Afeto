@@ -101,7 +101,7 @@ function Profile() {
           <p className="profile-subtitle">Atualize suas informações pessoais</p>
 
           <div className="profile-email-block">
-            <span className="profile-email-label">📧 E-mail</span>
+            <span className="profile-email-label"> E-mail</span>
             <span className="profile-email-value">{user?.email}</span>
             <span
               className="profile-email-lock"

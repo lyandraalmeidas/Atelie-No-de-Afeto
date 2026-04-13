@@ -3,11 +3,11 @@ import "./AdminLayout.css";
 import "./Admin.css";
 
 const NAV_LINKS = [
-  { to: "/admin", label: "Visão Geral", icon: "📊", end: true },
-  { to: "/admin/produtos", label: "Produtos", icon: "🎀" },
-  { to: "/admin/categorias", label: "Categorias", icon: "🗂" },
-  { to: "/admin/pedidos", label: "Pedidos", icon: "📦" },
-  { to: "/admin/usuarios", label: "Usuários", icon: "👥" },
+  { to: "/admin", label: "Visão Geral", end: true },
+  { to: "/admin/produtos", label: "Produtos" },
+  { to: "/admin/categorias", label: "Categorias" },
+  { to: "/admin/pedidos", label: "Pedidos" },
+  { to: "/admin/usuarios", label: "Usuários" },
 ];
 
 function AdminLayout() {

@@ -16,7 +16,9 @@ app.use('/uploads', express.static(UPLOAD_DIR));
 app.use(express.json());
 
 app.get('/health', (_req, res) => {
-  res.status(200).json({ status: 'ok', message: 'API Nós de Afeto funcionando.' });
+  res.status(200).json({ status: 'ok', message: `
+    -------------  API Nós de Afeto funcionando.---------------
+    ` });
 });
 
 app.use('/api', routes);

@@ -9,7 +9,7 @@ import {
 } from "../../services/api";
 import { useForm } from "../../hooks/useForm";
 import FeedbackMessage from "../../components/FeedbackMessage";
-import PageHeader from "../../components/PageHeader";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 const API = process.env.REACT_APP_API_URL || "http://localhost:3333/api";
 const EMPTY = {
@@ -52,11 +52,16 @@ async function uploadImageFile(file) {
 async function deleteOldImage(imageUrl) {
   if (!imageUrl) return;
   try {
-    const filename = imageUrl.split("/uploads/").pop();
+    // separa o nome do arquivo da URL, para evitar erros
+    const filename = imageUrl.split('/').pop();
     if (!filename) return;
+    
+    // só tenta deletar caso esteja armazenada locamente
+    if (!imageUrl.includes('/uploads/')) return;
+
     await fetch(`${API}/upload/imagem/${filename}`, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
   } catch {}
 }
@@ -108,7 +113,7 @@ function ImageUploader({ currentUrl, onUrlChange }) {
               onClick={() => fileRef.current?.click()}
               disabled={uploading}
             >
-              {uploading ? "Enviando..." : "✏️ Trocar"}
+              {uploading ? "Enviando..." : " Trocar "}
             </button>
             <button
               type="button"
@@ -126,7 +131,7 @@ function ImageUploader({ currentUrl, onUrlChange }) {
           onClick={() => fileRef.current?.click()}
           disabled={uploading}
         >
-          {uploading ? "Enviando..." : "📷 Adicionar imagem"}
+          {uploading ? "Enviando..." : " Adicionar imagem "}
         </button>
       )}
       <input
@@ -185,7 +190,7 @@ function AdminProductForm() {
         price: Number(values.price),
         stock: Number(values.stock),
         categoryId: values.categoryId,
-        ...(values.imageUrl ? { imageUrl: values.imageUrl } : {}),
+        imageUrl: values.imageUrl || null,
       };
       if (isEdit) await updateProduct(id, payload);
       else await createProduct(payload);
@@ -206,7 +211,7 @@ function AdminProductForm() {
 
   return (
     <div>
-      <PageHeader
+      <AdminPageHeader
         title={isEdit ? "Editar Produto" : "Novo Produto"}
         subtitle={
           isEdit

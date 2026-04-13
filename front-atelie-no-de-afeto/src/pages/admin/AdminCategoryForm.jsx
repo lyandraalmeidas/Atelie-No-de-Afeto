@@ -8,7 +8,7 @@ import {
 } from "../../services/api";
 import { useForm } from "../../hooks/useForm";
 import FeedbackMessage from "../../components/FeedbackMessage";
-import PageHeader from "../../components/PageHeader";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 const validate = (values) =>
   values.name?.trim() ? {} : { name: "Nome é obrigatório." };
@@ -54,7 +54,7 @@ function AdminCategoryForm() {
 
   return (
     <div>
-      <PageHeader
+      <AdminPageHeader
         title={isEdit ? "Editar Categoria" : "Nova Categoria"}
         subtitle={
           isEdit

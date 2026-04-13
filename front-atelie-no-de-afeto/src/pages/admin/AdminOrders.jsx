@@ -3,7 +3,7 @@ import { getOrders, updateOrderStatus, deleteOrder } from '../../services/api';
 import { useAdminTable } from '../../hooks/useAdminTable';
 import Pagination from '../../components/Pagination';
 import FeedbackMessage from '../../components/FeedbackMessage';
-import PageHeader from '../../components/PageHeader';
+import AdminPageHeader from '../../components/AdminPageHeader';
 
 const formatCurrency = (v) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
@@ -68,7 +68,7 @@ function AdminOrders() {
 
   return (
     <div>
-      <PageHeader title="Pedidos" subtitle="Gerencie e atualize o status dos pedidos." />
+      <AdminPageHeader title="Pedidos" subtitle="Gerencie e atualize o status dos pedidos." />
       <FeedbackMessage message={feedback} type="success" />
       <FeedbackMessage message={error} type="error" />
       <div className="admin-table-wrapper">

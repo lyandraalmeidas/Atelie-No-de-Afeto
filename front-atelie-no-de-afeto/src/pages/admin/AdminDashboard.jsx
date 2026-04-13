@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getProducts, getOrders, getUsers, getCategories } from '../../services/api';
-import PageHeader from '../../components/PageHeader';
+import AdminPageHeader from '../../components/AdminPageHeader';
 
 const STATS = [
-  { key: 'products',   label: 'Produtos',   icon: '🎀', to: '/admin/produtos'   },
-  { key: 'categories', label: 'Categorias', icon: '🗂',  to: '/admin/categorias' },
-  { key: 'orders',     label: 'Pedidos',    icon: '📦', to: '/admin/pedidos'     },
-  { key: 'users',      label: 'Usuários',   icon: '👥', to: '/admin/usuarios'      },
+  { key: 'products',   label: 'Produtos', to: '/admin/produtos'   },
+  { key: 'categories', label: 'Categorias', to: '/admin/categorias' },
+  { key: 'orders',     label: 'Pedidos',    to: '/admin/pedidos'     },
+  { key: 'users',      label: 'Usuários',   to: '/admin/usuarios'      },
 ];
 
 function StatCard({ icon, label, count, to, loading }) {
@@ -38,7 +38,7 @@ function AdminDashboard() {
 
   return (
     <div>
-      <PageHeader title="Visão Geral" subtitle="Resumo da plataforma em tempo real." />
+      <AdminPageHeader title="Visão Geral" subtitle="Resumo da plataforma em tempo real." />
       <div className="admin-dashboard-grid">
         {STATS.map(({ key, label, icon, to }) => (
           <StatCard key={key} label={label} icon={icon} to={to} count={counts[key]} loading={loading} />

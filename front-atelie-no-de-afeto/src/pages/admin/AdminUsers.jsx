@@ -2,7 +2,7 @@ import { getUsers } from "../../services/api";
 import { useAdminTable } from "../../hooks/useAdminTable";
 import Pagination from "../../components/Pagination";
 import FeedbackMessage from "../../components/FeedbackMessage";
-import PageHeader from "../../components/PageHeader";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 function RoleBadge({ role }) {
   //se não for admin, automaticamente é cliente
@@ -23,7 +23,7 @@ function AdminUsers() {
 
   return (
     <div>
-      <PageHeader
+      <AdminPageHeader
         title="Usuários"
         subtitle="Visualize os usuários cadastrados na plataforma."
       />

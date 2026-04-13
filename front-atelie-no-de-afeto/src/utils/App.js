@@ -8,13 +8,14 @@ import { useState, useCallback } from "react";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
 import { CartProvider } from "../contexts/CartContext";
 
-import Menu from "../components/Menu";
+import HeaderGlobal from "../components/HeaderGlobal";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Cart from "../pages/Cart";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
+import NotFound from '../pages/NotFound';
 
 import AdminLayout from "../pages/admin/AdminLayout";
 import AdminDashboard from "../pages/admin/AdminDashboard";
@@ -42,7 +43,7 @@ function AdminRoute({ children }) {
 function AppRoutes() {
   return (
     <>
-      <Menu />
+      <HeaderGlobal />
       <main>
         <Routes>
           {/* ─── aqui entra qualquer um  ─── */}
@@ -51,6 +52,7 @@ function AppRoutes() {
           <Route path="/carrinho" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
 
           {/* ─── aqui entra só quem tá logado ──── */}
           <Route
@@ -115,10 +117,10 @@ function SiteFooter() {
         <div>
           <h4>Links úteis</h4>
           <p>
-            <a href="/products">Produtos</a>
+            <a href="/produtos">Produtos</a>
           </p>
           <p>
-            <a href="/register">Cadastro</a>
+            <a href="/cadastro">Cadastro</a>
           </p>
         </div>
       </div>

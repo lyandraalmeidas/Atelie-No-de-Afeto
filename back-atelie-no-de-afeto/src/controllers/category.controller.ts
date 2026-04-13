@@ -1,11 +1,15 @@
-import { Request, Response, NextFunction } from 'express';
-import { CategoryService } from '../services/category.service';
-import { getPagination } from '../middlewares/pagination.middleware';
+import { Request, Response, NextFunction } from "express";
+import { CategoryService } from "../services/category.service";
+import { getPagination } from "../middlewares/pagination.middleware";
 
 export class CategoryController {
   private categoryService = new CategoryService();
 
-  findAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  findAll = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       const pagination = getPagination(req.query as Record<string, string>);
       const result = await this.categoryService.findAll(pagination);
@@ -15,7 +19,11 @@ export class CategoryController {
     }
   };
 
-  findById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  findById = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       const category = await this.categoryService.findById(req.params.id);
       res.status(200).json(category);
@@ -24,25 +32,44 @@ export class CategoryController {
     }
   };
 
-  create = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  create = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       const category = await this.categoryService.create(req.body);
-      res.status(201).json({ message: 'Categoria criada com sucesso.', category });
+      res
+        .status(201)
+        .json({ message: "Categoria criada com sucesso.", category });
     } catch (err) {
       next(err);
     }
   };
 
-  update = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  update = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
-      const category = await this.categoryService.update(req.params.id, req.body);
-      res.status(200).json({ message: 'Categoria atualizada com sucesso.', category });
+      const category = await this.categoryService.update(
+        req.params.id,
+        req.body,
+      );
+      res
+        .status(200)
+        .json({ message: "Categoria atualizada com sucesso.", category });
     } catch (err) {
       next(err);
     }
   };
 
-  delete = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  delete = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
     try {
       await this.categoryService.delete(req.params.id);
       res.status(204).send();

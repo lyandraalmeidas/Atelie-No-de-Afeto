@@ -4,9 +4,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUserPlus, FaSignInAlt, FaSignOutAlt, FaUserCog, FaUserCircle, FaShoppingCart } from 'react-icons/fa';
 import { useAuth } from '../contexts/AuthContext';
-import './Menu.css';
+import './HeaderGlobal.css';
 
-function Menu() {
+function HeaderGlobal() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -61,4 +61,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default HeaderGlobal;

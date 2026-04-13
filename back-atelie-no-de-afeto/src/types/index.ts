@@ -1,6 +1,6 @@
 import { OrderStatus, Role } from '@prisma/client';
 
-// ─── Pagination ───────────────────────────────────────────────
+// ─── Pagination ──────
 export interface PaginationQuery {
   page: number;
   limit: number;
@@ -11,7 +11,7 @@ export interface PaginatedResult<T> {
   meta: { total: number; page: number; limit: number; totalPages: number };
 }
 
-// ─── Auth ─────────────────────────────────────────────────────
+// ─── Auth ────
 export interface JwtPayload {
   userId: string;
   email: string;
@@ -28,7 +28,7 @@ export interface AuthResponse {
   user: UserPublic;
 }
 
-// ─── User ─────────────────────────────────────────────────────
+// ─── User ──────
 export interface UserPublic {
   id: string;
   name: string;
@@ -56,11 +56,11 @@ export interface UpdateUserInput {
   confirmPassword?: string;
 }
 
-// ─── Category ─────────────────────────────────────────────────
+// ─── Category ─────
 export interface CreateCategoryInput { name: string }
 export interface UpdateCategoryInput { name: string }
 
-// ─── Product ──────────────────────────────────────────────────
+// ─── Product ─────
 export interface CreateProductInput {
   name: string;
   description: string;
@@ -79,12 +79,12 @@ export interface UpdateProductInput {
   categoryId: string;
 }
 
-// ─── Order ────────────────────────────────────────────────────
+// ─── Order ────
 export interface OrderItemInput { productId: string; quantity: number }
 export interface CreateOrderInput { items: OrderItemInput[] }
 export interface UpdateOrderStatusInput { status: OrderStatus }
 
-// ─── Express augmentation ─────────────────────────────────────
+// ─── Express augmentation ──
 export { Role };
 
 declare global {

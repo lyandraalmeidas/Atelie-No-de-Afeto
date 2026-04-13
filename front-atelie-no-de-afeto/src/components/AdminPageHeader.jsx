@@ -1,4 +1,5 @@
 // header reutilizável
+import './AdminPageHeader.css';
 function PageHeader({ title, subtitle, action }) {
   return (
     <div className="page-header">

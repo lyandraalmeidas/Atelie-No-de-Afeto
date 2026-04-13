@@ -3,7 +3,7 @@ import { getCategories, deleteCategory } from "../../services/api";
 import { useAdminTable } from "../../hooks/useAdminTable";
 import Pagination from "../../components/Pagination";
 import FeedbackMessage from "../../components/FeedbackMessage";
-import PageHeader from "../../components/PageHeader";
+import AdminPageHeader from "../../components/AdminPageHeader";
 
 function AdminCategories() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function AdminCategories() {
 
   return (
     <div>
-      <PageHeader
+      <AdminPageHeader
         title="Categorias"
         subtitle="Organize os produtos por categoria."
         action={

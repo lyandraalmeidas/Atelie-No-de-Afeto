@@ -1,11 +1,17 @@
-import prisma from '../lib/prisma';
+import prisma from "../lib/prisma";
 
 const cartInclude = {
   include: {
     items: {
       include: {
         product: {
-          select: { id: true, name: true, price: true, stock: true, categoryId: true },
+          select: {
+            id: true,
+            name: true,
+            price: true,
+            stock: true,
+            categoryId: true,
+          },
         },
       },
     },
@@ -15,7 +21,10 @@ const cartInclude = {
 export class CartRepository {
   // puxa o carrinho existente ou cria um novo vazio
   async findOrCreate(userId: string) {
-    const existing = await prisma.cart.findUnique({ where: { userId }, ...cartInclude });
+    const existing = await prisma.cart.findUnique({
+      where: { userId },
+      ...cartInclude,
+    });
     if (existing) return existing;
     return prisma.cart.create({ data: { userId }, ...cartInclude });
   }
@@ -32,11 +41,17 @@ export class CartRepository {
   }
 
   // atualiza quantidade ou remove se for zero
-  async updateItemQuantity(userId: string, productId: string, quantity: number) {
+  async updateItemQuantity(
+    userId: string,
+    productId: string,
+    quantity: number,
+  ) {
     const cart = await prisma.cart.findUnique({ where: { userId } });
     if (!cart) return null;
     if (quantity <= 0) {
-      await prisma.cartItem.deleteMany({ where: { cartId: cart.id, productId } });
+      await prisma.cartItem.deleteMany({
+        where: { cartId: cart.id, productId },
+      });
     } else {
       await prisma.cartItem.updateMany({
         where: { cartId: cart.id, productId },

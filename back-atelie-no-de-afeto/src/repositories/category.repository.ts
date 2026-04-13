@@ -1,13 +1,23 @@
-import { Prisma } from '@prisma/client';
-import prisma from '../lib/prisma';
-import { PaginationQuery, PaginatedResult, CreateCategoryInput, UpdateCategoryInput } from '../types';
+import { Prisma } from "@prisma/client";
+import prisma from "../lib/prisma";
+import {
+  PaginationQuery,
+  PaginatedResult,
+  CreateCategoryInput,
+  UpdateCategoryInput,
+} from "../types";
 
-type CategoryWithProducts = Prisma.CategoryGetPayload<{ include: { products: true } }>;
+type CategoryWithProducts = Prisma.CategoryGetPayload<{
+  include: { products: true };
+}>;
 type CategoryBase = Prisma.CategoryGetPayload<Record<string, never>>;
 
 export class CategoryRepository {
   async findById(id: string) {
-    return prisma.category.findUnique({ where: { id }, include: { products: true } });
+    return prisma.category.findUnique({
+      where: { id },
+      include: { products: true },
+    });
   }
 
   async findByName(name: string) {
@@ -26,13 +36,18 @@ export class CategoryRepository {
     return prisma.category.delete({ where: { id } });
   }
 
-  async findAll(pagination: PaginationQuery): Promise<PaginatedResult<CategoryBase>> {
+  async findAll(
+    pagination: PaginationQuery,
+  ): Promise<PaginatedResult<CategoryBase>> {
     const { page, limit } = pagination;
     const skip = (page - 1) * limit;
     const [data, total] = await Promise.all([
-      prisma.category.findMany({ skip, take: limit, orderBy: { name: 'asc' } }),
+      prisma.category.findMany({ skip, take: limit, orderBy: { name: "asc" } }),
       prisma.category.count(),
     ]);
-    return { data, meta: { total, page, limit, totalPages: Math.ceil(total / limit) } };
+    return {
+      data,
+      meta: { total, page, limit, totalPages: Math.ceil(total / limit) },
+    };
   }
 }
