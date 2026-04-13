@@ -1,0 +1,115 @@
+/* ─── alyout ─── */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-muted);
+}
+
+/* ─── sidebar ──── */
+.admin-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.admin-sidebar-brand {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin-bottom: 1.75rem;
+  padding: 0 0.5rem;
+  display: block;
+  text-decoration: none;
+}
+
+.admin-sidebar-section {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.admin-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.admin-sidebar-link:hover {
+  background: var(--bg-soft);
+  color: var(--text-primary);
+}
+
+.admin-sidebar-link--active {
+  background: var(--accent-light);
+  color: var(--text-accent);
+  font-weight: 700;
+}
+
+.admin-sidebar-link--active:hover {
+  background: var(--accent-light);
+  color: var(--text-accent);
+}
+
+/* ─── main ──── */
+.admin-main {
+  flex: 1;
+  padding: 2.5rem 2rem;
+  overflow-x: auto;
+}
+
+.admin-main-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.25rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .admin-sidebar-brand {
+    margin-bottom: 0;
+    margin-right: auto;
+  }
+  .admin-sidebar-section {
+    display: none;
+  }
+
+  .admin-sidebar-link {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .admin-main {
+    padding: 1.5rem 1rem;
+  }
+}
