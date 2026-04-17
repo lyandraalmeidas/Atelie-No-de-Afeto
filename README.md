@@ -7,7 +7,7 @@
 
 ---
 
-## Crie uma conexão com o banco de dados locamente
+## Crie uma conexão com o banco de dados localmente
 
 ## START MySql no XAMPP
 
